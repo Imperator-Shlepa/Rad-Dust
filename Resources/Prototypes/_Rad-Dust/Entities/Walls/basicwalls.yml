@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseWall
+  id: WallKeramik
+  name: Керамическая стена
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Sprite
+    sprite: _Rad-Dust/Structure/Walls/keramik_wall.rsi
+  - type: WallReplacementMarker
+  - type: Icon
+    sprite: _Rad-Dust/Structure/Walls/keramik_wall.rsi
+  #  - type: RCDDeconstructable
+  #    cost: 6
+  #    delay: 8
+  #    fx: EffectRCDDeconstruct8
+  - type: IconSmooth
+    key: walls
+    base: keramik_wall_

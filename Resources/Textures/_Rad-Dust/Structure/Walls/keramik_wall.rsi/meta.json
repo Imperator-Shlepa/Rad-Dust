@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "Only for Rad Dust project",
+  "copyright": "by Imperator Shlepa",
+    "size": {
+        "x": 32,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "keramik_wall_0",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_1",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_2",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_3",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_4",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_5",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_6",
+            "directions": 4
+        },
+        {
+            "name": "keramik_wall_7",
+            "directions": 4
+        },
+        {
+            "name": "full"
+        }
+    ]
+}

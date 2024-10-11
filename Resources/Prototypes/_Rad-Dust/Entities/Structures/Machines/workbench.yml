@@ -1,0 +1,229 @@
+- type: entity
+  id: RD14BaseWorkbench
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  abstract: true
+  name: lathe
+  components:
+  - type: Appearance
+  - type: WiresVisuals
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: Lathe
+  - type: MaterialStorage
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: WiresPanel
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+
+# a lathe that can be sped up with space lube / slowed down with glue
+- type: entity
+  abstract: true
+  parent: RD14BaseWorkbench
+  id: RD14BaseWorkbenchLube
+  components:
+  - type: ReagentSpeed
+    solution: lube
+    modifiers:
+      SpaceLube: 0.25
+      SpaceGlue: 5
+  - type: SolutionContainerManager
+    solutions:
+      lube:
+        maxVol: 250
+  - type: Spillable
+    solution: lube
+  - type: RefillableSolution
+    solution: lube
+  - type: ExaminableSolution
+    solution: lube
+
+
+###################################################
+
+- type: entity
+  id: RD14Workbench
+  parent: RD14BaseWorkbenchLube
+  name: Верстак
+  description: Верстак — это место, где простые вещи обретают новую жизнь, превращаясь в нечто большее.
+  components:
+  - type: Sprite
+    sprite: _Rad-Dust/Structure/Machines/workbench.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    # - state: unlit
+    #   shader: unshaded
+    #   map: ["enum.PowerDeviceVisualLayers.Powered"]
+    # - state: inserting
+    #   map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    # - state: panel
+    #   map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: AutolatheMachineCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
+    staticRecipes:
+      - Wirecutter
+      - Igniter
+      - Signaller
+      - Screwdriver
+      - Welder
+      - Wrench
+      - CrowbarGreen
+      - Multitool
+      - NetworkConfigurator
+      - SprayPainter
+      - FlashlightLantern
+      - CableStack
+      - CableMVStack
+      - CableHVStack
+      - HandheldGPSBasic
+      - TRayScanner
+      - AirTank
+      - GasAnalyzer
+      - UtilityBelt
+      - Pickaxe
+      - ModularReceiver
+      - AppraisalTool
+      - SheetRGlass
+      - Beaker
+      - Syringe
+      - HandLabeler
+      - LightTube
+      - LedLightTube
+      - SodiumLightTube
+      - ExteriorLightTube
+      - LightBulb
+      - LedLightBulb
+      - Bucket
+      - DrinkMug
+      - DrinkMugMetal
+      - DrinkGlass
+      - DrinkShotGlass
+      - DrinkGlassCoupeShaped
+      - CustomDrinkJug
+      - FoodPlate
+      - FoodPlateSmall
+      - FoodPlatePlastic
+      - FoodPlateSmallPlastic
+      - FoodBowlBig
+      - FoodPlateTin
+      - FoodKebabSkewer
+      - SprayBottle
+      - MopItem
+      - Holoprojector
+      - Mousetrap
+      - LightReplacer
+      - TrashBag
+      - PowerCellSmall
+      - PowerCellMedium
+      - RollerBedSpawnFolded
+      - CheapRollerBedSpawnFolded
+      - EmergencyRollerBedSpawnFolded
+      - MicroManipulatorStockPart
+      - MatterBinStockPart
+      - CapacitorStockPart
+      - ConveyorBeltAssembly
+      - IntercomElectronics
+      - FirelockElectronics
+      - DoorElectronics
+      - AirAlarmElectronics
+      - StationMapElectronics
+      - FireAlarmElectronics
+      - MailingUnitElectronics
+      - SignalTimerElectronics
+      - APCElectronics
+      - SMESMachineCircuitboard
+      - SubstationMachineCircuitboard
+      - WallmountSubstationElectronics
+      - CellRechargerCircuitboard
+      - BorgChargerCircuitboard
+      - WeaponCapacitorRechargerCircuitboard
+      - HandheldStationMap
+      - ClothingHeadHatWelding
+      - WetFloorSign
+      - ClothingHeadHatCone
+
+  - type: EmagLatheRecipes
+    emagStaticRecipes:
+      - BoxLethalshot
+      - BoxShotgunFlare
+      - BoxShotgunSlug
+      - CombatKnife
+      - MagazineBoxLightRifle
+      - MagazineBoxMagnum
+      - MagazineBoxPistol
+      - MagazineBoxRifle
+      - MagazineLightRifle
+      - MagazineLightRifleEmpty
+      - MagazinePistol
+      - MagazinePistolEmpty
+      - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGunEmpty
+      - MagazinePistolSubMachineGunTopMounted
+      - MagazinePistolSubMachineGunTopMountedEmpty
+      - MagazineRifle
+      - MagazineRifleEmpty
+      - MagazineShotgun
+      - MagazineShotgunEmpty
+      - MagazineShotgunSlug
+      - RiotShield
+      - SpeedLoaderMagnum
+      - SpeedLoaderMagnumEmpty
+  - type: BlueprintReceiver
+    whitelist:
+      tags:
+      - BlueprintAutolathe
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      blueprint: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - blueprint 

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "Only for Rad Dust project",
+  "copyright": "by Imperator Shlepa",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "bottle-cap"
+    },
+    {
+      "name": "bottle-cap2"
+    },
+    {
+      "name": "bottle-cap3"
+    }
+  ]
+}

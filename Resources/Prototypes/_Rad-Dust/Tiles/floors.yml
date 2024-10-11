@@ -1,0 +1,11 @@
+- type: tile
+  id: FloorKeramik
+  name: Керамический пол
+  sprite: /Textures/_Rad-Dust/Tiles/keramik.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000

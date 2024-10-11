@@ -1,0 +1,79 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: RD14BottleCaps
+  description: Валюта мрачного будущего.
+  components:
+  - type: Sprite
+    sprite: _Rad-Dust/Objects/Money/bottle-caps-nukacolla.rsi
+  - type: Item
+    sprite: _Rad-Dust/Objects/Money/bottle-caps-nukacolla.rsi
+    size: Tiny
+  - type: StaticPrice
+    price: 0
+  - type: Tag
+    tags:
+    - Sheet
+    - Metal
+  - type: SolutionContainerManager
+    solutions:
+      steel:
+        canReact: false
+
+- type: entity
+  parent: RD14BottleCaps
+  id: BottleCapsNukaColla
+  name: Крышки
+  suffix: ПОЛН
+  components:
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+  - type: Stack
+    stackType: Caps
+    baseLayer: base
+    layerStates:
+    - bottle-cap
+    - bottle-cap2
+    - bottle-cap3
+  - type: Sprite
+    state: bottle-cap3
+    layers:
+    - state: bottle-cap3
+      map: ["base"]
+  - type: Item
+    heldPrefix: steel
+  - type: Appearance
+  - type: Extractable
+    grindableSolutionName: steel
+  - type: SolutionContainerManager
+    solutions:
+      steel:
+        reagents:
+        - ReagentId: Iron
+          Quantity: 10
+
+- type: entity
+  parent: BottleCapsNukaColla
+  id: BottleCapsNukaColla10
+  name: Крышки
+  suffix: 10
+  components:
+  - type: Sprite
+    state: steel
+  - type: Stack
+    stackType: Steel
+    count: 10
+
+- type: entity
+  parent: BottleCapsNukaColla
+  id: BottleCapsNukaColla1
+  name: Крышки
+  suffix: Single
+  components:
+  - type: Sprite
+    state: steel
+  - type: Stack
+    stackType: Steel
+    count: 1

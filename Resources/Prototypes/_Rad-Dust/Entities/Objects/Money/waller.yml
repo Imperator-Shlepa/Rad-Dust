@@ -1,0 +1,19 @@
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: RD14Wallet
+  name: Бумажник
+  description: Деньги, визитки и прочий trash.
+  components:
+  - type: Sprite
+    sprite: _Rad-Dust/Objects/Money/wallet.rsi
+  - type: Clothing
+    sprite: _Rad-Dust/Objects/Money/wallet.rsi
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: icon-open }
+          False: { state: icon }
+  - type: Storage
+    grid:
+    - 0,0,3,1

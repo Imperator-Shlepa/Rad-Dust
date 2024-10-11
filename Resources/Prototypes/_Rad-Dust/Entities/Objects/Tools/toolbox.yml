@@ -1,0 +1,42 @@
+- type: entity
+  id: RDToolboxBase
+  parent: BaseStorageItem
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+      - map: [ base ]
+        state: icon
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,6,3
+  - type: Item
+    size: Ginormous
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 12
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+  - type: Tag
+    tags:
+    - Toolbox
+  - type: Appearance
+
+- type: entity
+  name: emergency toolbox
+  parent: RDToolboxBase
+  id: RDToolboxBlue
+  description: A bright red toolbox, stocked with emergency tools.
+  components:
+  - type: Sprite
+    sprite: _Rad-Dust/Objects/Tools/Toolboxes/toolbox_old.rsi
+    state: icon
+  - type: Item
+    sprite: _Rad-Dust/Objects/Tools/Toolboxes/toolbox_old.rsi
+
+
